@@ -1,6 +1,6 @@
-# 🔍 CMDB Graph RAG Demo
+# CMDB Graph RAG Demo
 
-A weekend demo showcasing **Retrieval-Augmented Generation (RAG)** over a **property graph** for CMDB (Configuration Management Database) relationship queries. This demo runs entirely outside of Rails and uses:
+A short demo showcasing **Retrieval-Augmented Generation (RAG)** over a **property graph** for CMDB (Configuration Management Database) relationship queries. This demo runs entirely outside of Rails and uses:
 
 - **LangChain / LangGraph** for RAG orchestration
 - **Neo4j** as the property graph database
@@ -9,7 +9,7 @@ A weekend demo showcasing **Retrieval-Augmented Generation (RAG)** over a **prop
 - **React + Vite** for the interactive frontend
 - **vis-network** for graph visualization
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
@@ -325,11 +325,11 @@ Health check endpoint.
 - Verify graph data in API response
 - Try a different question
 
-## 📄 License
+## License
 
 MIT License - Feel free to use this demo for learning and development!
 
-## 🤝 Contributing
+## Contributing
 
 This is a demo project, but contributions are welcome! Feel free to:
 - Report bugs
@@ -337,7 +337,7 @@ This is a demo project, but contributions are welcome! Feel free to:
 - Submit pull requests
 - Share your use cases
 
-## 📞 Support
+## Support
 
 For questions or issues, please open a GitHub issue.
 
