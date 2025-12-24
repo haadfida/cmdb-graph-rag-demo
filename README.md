@@ -48,7 +48,7 @@ The demo includes a hardcoded graph with:
 - `OWNS`: Users → Services
 - `MANAGES`: Users → Assets
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -89,7 +89,7 @@ docker compose exec app python embed_nodes.py
 open http://localhost:5173
 ```
 
-## 📝 Example Questions
+## Example Questions
 
 Try asking:
 
@@ -101,13 +101,6 @@ Try asking:
 - "Which assets depend on the Redis-Cache?"
 - "Show me all services owned by John Smith"
 
-## 🎯 What You Can Demo in 5 Minutes
-
-1. **Semantic Search**: Ask natural language questions about your infrastructure
-2. **Impact Analysis**: Query "What breaks if X goes down?" → follows DEPENDS_ON edges
-3. **Ownership Tracking**: "Who owns X?" → shows User nodes + relationships
-4. **Interactive Graph**: Drag nodes, hover for details, see relevant subgraphs
-5. **Real-time RAG**: Watch the system retrieve context and generate answers
 
 ## 🔧 Development
 
@@ -170,7 +163,7 @@ docker compose exec app python graph_retriever.py
 docker compose exec app python rag_chain.py
 ```
 
-## 🔍 How RAG Works Here
+## How RAG Works Here
 
 1. **User asks a question** → Frontend sends to `/ask` endpoint
 2. **Question Embedding** → Google Gemini creates vector embedding (768-dim)
@@ -181,7 +174,7 @@ docker compose exec app python rag_chain.py
 7. **Response** → Answer + sources + graph data returned to frontend
 8. **Visualization** → Interactive graph rendered with vis-network
 
-## 📊 Tech Stack
+## Tech Stack
 
 ### Backend
 - **Python 3.11**
@@ -201,7 +194,7 @@ docker compose exec app python rag_chain.py
 - **Docker Compose**: Container orchestration
 - **Neo4j 5 Community**: Graph database with APOC + GDS plugins
 
-## 🎨 Customization
+## Customization
 
 ### Add Your Own Data
 
@@ -230,7 +223,7 @@ Edit `backend/rag_chain.py`:
 self.llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0)
 ```
 
-## 🚢 Next Steps
+## Next Steps
 
 If you like this demo, you can:
 
@@ -257,7 +250,7 @@ If you like this demo, you can:
    - Expose API for other services
    - Build Slack/Teams bot integration
 
-## 📝 API Documentation
+## API Documentation
 
 ### POST `/ask`
 
@@ -313,7 +306,7 @@ Get example questions to try.
 
 Health check endpoint.
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 **Neo4j connection issues**:
 - Wait for Neo4j to fully start (check `docker compose logs neo4j`)
@@ -349,5 +342,3 @@ This is a demo project, but contributions are welcome! Feel free to:
 For questions or issues, please open a GitHub issue.
 
 ---
-
-**Built with ❤️ for CMDB relationship management**
