@@ -11,6 +11,7 @@ from graph_retriever_local import GraphRetriever
 from simple_llm import generate_answer
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 USE_SIMPLE_LLM = os.getenv("USE_SIMPLE_LLM", "false").lower() == "true"
 
 
@@ -26,7 +27,8 @@ class GraphState(TypedDict):
 class CMDBRagChain:
     """RAG Chain for CMDB question answering using LangGraph"""
 
-    def __init__(self, model_name: str = "gemini-pro"):
+    def __init__(self, model_name: str | None = None):
+        model_name = model_name or GEMINI_MODEL
         self.retriever = GraphRetriever()
         self.llm = ChatGoogleGenerativeAI(
             model=model_name,
