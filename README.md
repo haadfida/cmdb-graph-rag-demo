@@ -11,15 +11,11 @@ A short demo showcasing **Retrieval-Augmented Generation (RAG)** over a **proper
 
 ## Architecture
 
-```
-┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│  React Frontend │─────▶│  FastAPI Backend│─────▶│   Neo4j Graph   │
-│  (Port 5173)    │      │  (Port 8000)    │      │  (Port 7687)    │
-└─────────────────┘      └─────────────────┘      └─────────────────┘
-       │                         │                         │
-       │                         │                         │
-  Interactive UI          RAG Chain               Vector Index +
-  + Graph Viz          (LangGraph)              CMDB Entities
+```mermaid
+flowchart LR
+    UI["React Frontend :5173<br/>Interactive UI + Graph Viz"] -->|HTTP| API["FastAPI Backend :8000<br/>RAG Chain (LangGraph)"]
+    API -->|Bolt| DB[("Neo4j :7687<br/>Vector Index + CMDB Entities")]
+    API -->|Embeddings + LLM| G["Google Gemini API"]
 ```
 
 ### Components
@@ -59,7 +55,7 @@ The demo includes a hardcoded graph with:
 
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/haad-fida/cmdb-graph-rag-demo
+git clone https://github.com/haadfida/cmdb-graph-rag-demo
 cd cmdb-graph-rag-demo
 ```
 
@@ -170,7 +166,7 @@ docker compose exec app python rag_chain.py
 3. **Vector Search** → Neo4j finds top-k similar nodes (cosine similarity)
 4. **Graph Expansion** → Retrieves 1-hop neighbors for context
 5. **Context Formatting** → Converts graph data to text
-6. **LLM Generation** → Gemini 1.5 Flash answers based on graph context
+6. **LLM Generation** → Gemini 2.5 Flash answers based on graph context
 7. **Response** → Answer + sources + graph data returned to frontend
 8. **Visualization** → Interactive graph rendered with vis-network
 
@@ -182,7 +178,7 @@ docker compose exec app python rag_chain.py
 - **LangChain**: LLM orchestration
 - **LangGraph**: Workflow management
 - **Neo4j**: Graph database
-- **Google Gemini API**: Embeddings (embedding-001) + LLM (gemini-1.5-flash)
+- **Google Gemini API**: Embeddings (embedding-001) + LLM (gemini-2.5-flash)
 
 ### Frontend
 - **React 18**
@@ -214,14 +210,7 @@ self.embedding_dimension = 768  # Gemini embedding dimension
 
 ### Change LLM Model
 
-Edit `backend/rag_chain.py`:
-```python
-# Available Gemini models:
-# - gemini-1.5-flash (default, fast and efficient)
-# - gemini-1.5-pro (more capable, slower)
-# - gemini-pro (legacy)
-self.llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0)
-```
+Set `GEMINI_MODEL` in `.env` (default `gemini-2.5-flash`, free tier). Other options: `gemini-2.5-flash-lite` (higher free limits), `gemini-2.5-pro` (more capable, tighter free limits).
 
 ## Next Steps
 

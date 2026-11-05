@@ -34,6 +34,7 @@ services:
       - NEO4J_USER=neo4j
       - NEO4J_PASSWORD=password123
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-flash}
     volumes:
       - ./backend:/app
     depends_on:
